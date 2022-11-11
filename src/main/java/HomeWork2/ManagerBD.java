@@ -22,6 +22,7 @@ public class ManagerBD {
             }
         } catch (SQLException exception) {
             //System.err.println(exception.getMessage());
+            System.err.println("Не удалось подключиться к БД");
         }
         return connection;
     }
