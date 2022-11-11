@@ -1,0 +1,4 @@
+create table if not exists user_table (id int generated always as identity primary key unique not null, name varchar(100) not null, password varchar(10) not null, created_at timestamp );
+create table if not exists post (id int generated always as identity primary key unique not null, text text not null, created_at timestamp , user_id int not null references user_table(id));
+create table if not exists comment (id int generated always as identity primary key, text text not null, post_id int references post(id), user_id int not null references user_table(id),created_at timestamp );
+create table if not exists like_table (id int generated always as identity primary key, user_id integer references user_table(id) not null, post_id int references post(id), comment_id int references comment(id) check(post_id is not null OR comment_id is not null));
